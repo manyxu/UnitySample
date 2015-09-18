@@ -1,0 +1,21 @@
+-- GameManager.lua
+
+import "UnityEngine"
+
+local class = {}
+
+function class:init()
+
+end
+
+function class:update()
+
+end
+
+function main()
+
+	class.root = GameObject("root")
+	class:init()
+	
+	return class
+end

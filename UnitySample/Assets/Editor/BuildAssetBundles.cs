@@ -46,6 +46,44 @@ public class UnitySampleEditor
 		AssetDatabase.Refresh ();
 	}
 
+	static List<UnityEngine.Object> FindModelPrefab()
+	{
+		List<UnityEngine.Object> ui = new List<UnityEngine.Object> ();
+		var guids = AssetDatabase.FindAssets ("t:GameObject", new string[] {"Assets/Media/ModelPrefab"});
+		
+		foreach (var g in guids) 
+		{
+			string path = AssetDatabase.GUIDToAssetPath(g);
+			UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject));
+			if (null != obj)
+			{
+				ui.Add(obj);
+			}
+		}
+		
+		return ui;
+	}
+
+	[MenuItem ("UnitySample/Build_ModelPrefab")]
+	static void Build_ModelPrefab ()
+	{
+		BuildAssetBundleOptions opt = BuildAssetBundleOptions.CollectDependencies |
+			BuildAssetBundleOptions.CompleteAssets | BuildAssetBundleOptions.DeterministicAssetBundle;
+		
+		var objs = FindModelPrefab ();
+		if (objs.Count > 0) 
+		{
+			BuildPipeline.BuildAssetBundle(null, objs.ToArray(),
+			                               Application.streamingAssetsPath + "/modelprefab.unity3d", opt, 
+			                               EditorUserBuildSettings.activeBuildTarget);
+		}
+		
+		if (sIsShowDialog)
+			EditorUtility.DisplayDialog ("Build Assets", "Build Assets Complete!", "OK");
+		
+		AssetDatabase.Refresh ();
+	}
+
 	[MenuItem ("UnitySample/Build_All")]
 	static void Build_All ()
 	{

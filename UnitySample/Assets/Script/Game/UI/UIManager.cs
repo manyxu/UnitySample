@@ -85,16 +85,9 @@ public class UIManager
 	{
 	}
 
-	// ui assets
-	static string[] UI_ASSETS = new string[] { "ui.unity3d"};
-
 	// factory
 	private Dictionary<string, UIAbsFactory> mFacDic = new Dictionary<string, UIAbsFactory>();
 	public Dictionary<string, UIAbsFactory> FactoryDic { get { return mFacDic; } }
-
-	// delegate event
-	public delegate void EventUI();
-	public event EventUI OnInitlize;
 
 	// uis
 	[HideInInspector]
@@ -104,34 +97,19 @@ public class UIManager
 	{
 		mRoot = new GameObject("UIRoot");
 		GameObject.DontDestroyOnLoad(mRoot);
+
+		// pages
+		mFacDic.Add(PageName.UIPageMain, new UIFactory<UIPageMain>("ui.unity3d", PageName.UIPageMain));
 		
-		_Load(0, () => {
+		// views
+		mFacDic.Add(ViewName.Login, new UIFactory<UIViewLogin>("ui.unity3d", ViewName.Login));
 
-			// pages
-			mFacDic.Add(PageName.UIPageMain, new UIFactory<UIPageMain>("ui.unity3d", PageName.UIPageMain));
+		// open page
+		UIPage page = PagePush(PageName.UIPageMain);
+		page.OpenView<UIViewLogin>(ViewName.Login);
 
-			// views
-			mFacDic.Add(ViewName.Login, new UIFactory<UIViewLogin>("ui.unity3d", ViewName.Login));
-
-			if (OnInitlize != null)
-				OnInitlize();
-		});
-	}
-	
-	void _Load(int startIndex, EventUI callback)
-	{
-		// load complete
-		if (startIndex >= UI_ASSETS.Length)
-		{
-			if(callback != null)
-				callback();
-
-			return;
-		}
-		
-		var assetMgr = AssetsManager.GetInstance();
-		assetMgr.LoadAsset(UI_ASSETS[startIndex], (AssetBundle asset) => {
-			_Load(startIndex + 1, callback); }, null);
+		// load level;
+		//Application.LoadLevel("Login");
 	}
 
 	// pages

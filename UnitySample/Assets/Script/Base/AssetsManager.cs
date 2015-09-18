@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using LuaInterface;
+using SLua;
 
+[CustomLuaClassAttribute]
 public class LoadingProgressArg : EventArgs
 {
 	public LoadingProgressArg(float process, string assetName)
@@ -18,6 +21,7 @@ public class LoadingProgressArg : EventArgs
 public delegate void EventStatus(LoadingProgressArg arg0);
 public delegate void EventComplete(AssetBundle bundle);
 
+[CustomLuaClassAttribute]
 public class AssetsManager
 {
 	public struct LoadingWWW
@@ -161,7 +165,7 @@ public class AssetsManager
 			loading.status(new LoadingProgressArg(loading.www.progress, relPath));
 		mLoadingList.Add(loading);		
 	}
-
+	
 	public void Tick()
 	{
 		for (int i = mLoadingList.Count - 1; i >= 0; i--) 

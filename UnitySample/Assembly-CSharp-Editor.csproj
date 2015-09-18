@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\BuildAssetBundles.cs" />
+     <Compile Include="Assets\Slua\Editor\CustomExport.cs" />
+     <Compile Include="Assets\Slua\Editor\LuaCodeGen.cs" />
+     <Compile Include="Assets\Slua\Editor\LuaConsole.cs" />
+     <None Include="Assets\Slua\Resources\module\some.txt" />
+     <None Include="Assets\Slua\Resources\main.txt" />
+     <None Include="Assets\Slua\Resources\circle\circle.txt" />
+     <None Include="Assets\Slua\Resources\perf.txt" />
+     <None Include="Assets\Slua\Resources\delegate.txt" />
+     <None Include="Assets\Slua\Resources\valuetype.txt" />
+     <None Include="Assets\Slua\Resources\varobj.txt" />
+     <None Include="Assets\Slua\Resources\custom.txt" />
+     <None Include="Assets\Resources\Lua\GameManager.txt" />
+     <None Include="Assets\slua_src\build.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
  </Reference>
