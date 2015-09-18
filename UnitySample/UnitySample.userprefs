@@ -1,0 +1,21 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Game\UI\UIManager.cs">
+    <Files>
+      <File FileName="Assets\Script\Game\UI\UIManager.cs" Line="281" Column="4" />
+      <File FileName="Assets\Editor\BuildAssetBundles.cs" Line="32" Column="78" />
+      <File FileName="Assets\Script\Game\GameManager.cs" Line="40" Column="48" />
+      <File FileName="Assets\Script\Game\Bat\TankControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Game\UI\Views\UIViewLogin.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Base\UI\UIView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Base\UI\UIPage.cs" Line="37" Column="4" />
+      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Base\UI\UIWidget.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Game\UI\Pages\UIPageMain.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
