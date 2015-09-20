@@ -1,20 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Slua\Script\LuaSvr.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Base\AssetsManager.cs">
     <Files>
-      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="10" Column="2" />
-      <File FileName="Assets\Script\Game\GameManager.cs" Line="75" Column="37" />
-      <File FileName="Assets\Slua\Script\LuaSvr.cs" Line="37" Column="31" />
-      <File FileName="Assets\Slua\Script\LuaDLLWrapper.cs" Line="1" Column="1" />
-      <File FileName="Assets\Slua\Script\LuaObject_overload.cs" Line="1" Column="1" />
-      <File FileName="Assets\Slua\Script\LuaState.cs" Line="785" Column="3" />
-      <File FileName="Assets\Slua\Script\WeakDictionary.cs" Line="1" Column="1" />
-      <File FileName="Assets\Slua\Script\Timer.cs" Line="214" Column="5" />
+      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="72" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\xuduo\Documents\GitHub\UnitySample\UnitySample\Assets\Editor\BuildAssetBundles.cs" line="56" />
+      <Breakpoint file="C:\Users\xuduo\Documents\GitHub\UnitySample\UnitySample\Assets\Script\Base\AssetsManager.cs" line="155" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -7,6 +7,8 @@ using SLua;
 // delegate event
 public delegate void EventUI();
 
+// 游戏管理器 
+// 这是一个单件实例，控制着整个游戏的生命
 public class GameManager : MonoBehaviour 
 {
 	// Instances
@@ -32,20 +34,20 @@ public class GameManager : MonoBehaviour
 
 		GameObject gameObjectUIRoot = GameObject.Find("UIRoot");
 		GameObject.Destroy (gameObjectUIRoot);
-		
-		mAssetsMgr = AssetsManager.GetInstance ();
-		string updatePath = Application.persistentDataPath + "Update";
-		if (!Directory.Exists(updatePath)) 
-			Directory.CreateDirectory(updatePath);
-		mAssetsMgr.AddCachePath (updatePath);
 
+		// asset manager
+		mAssetsMgr = AssetsManager.GetInstance ();
+		// asset manager update path
+		string updatePath = Application.persistentDataPath + "Update";
+		if (!Directory.Exists(updatePath)) Directory.CreateDirectory(updatePath);
+		mAssetsMgr.AddUpdatePath (updatePath);
+
+		// ui manager
 		mUIMgr = UIManager.GetInstance ();
 
 		_Load(0, () => {
 			mUIMgr.Initlize();
 		});
-
-		mAssetsMgr.GetFromCache ("modelprefab.unity3d");
 	}
 	
 	// assets
@@ -64,7 +66,7 @@ public class GameManager : MonoBehaviour
 		assetMgr.LoadAsset(UI_ASSETS[startIndex], (AssetBundle asset) => {
 			_Load(startIndex + 1, callback); }, null);
 	}
-
+	
 	public LuaSvr luaSvr_GM;
 	public LuaTable luaSelf_GM;
 	public LuaFunction luaUpdate_GM;

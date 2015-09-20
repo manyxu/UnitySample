@@ -42,34 +42,35 @@ public class AssetsManager
 		return sInstance;
 	}
 
-	List<string> mCachePaths;
+	List<string> mUpdatePaths;
 	Dictionary<string, AssetBundle> mCacheAssets;
 	List<LoadingWWW> mLoadingList;
 	
 	private AssetsManager()
 	{
-		mCachePaths = new List<string> ();
+		mUpdatePaths = new List<string> ();
 		mCacheAssets = new Dictionary<string, AssetBundle> ();
 		mLoadingList = new List<LoadingWWW> ();
 	}
 
 	// cache
-	public void AddCachePath(string path)
+	public void AddUpdatePath(string path)
 	{
-		mCachePaths.Add (path);
+		mUpdatePaths.Add (path);
 	}
 
-	public void ClearCachePath()
+	public void ClearUpdatePath()
 	{
-		mCachePaths.Clear ();
+		mUpdatePaths.Clear ();
 	}
 
 	public AssetBundle GetFromCache(string relPath) 
 	{
 		string absPath = "";
 		AssetBundle bundle = null;
-		
-		foreach (var p in mCachePaths)
+
+		// first check updatepath to get
+		foreach (var p in mUpdatePaths)
 		{
 			absPath = p + "/" + relPath;
 			if (mCacheAssets.TryGetValue (absPath, out bundle)) 
@@ -77,9 +78,9 @@ public class AssetsManager
 				return bundle;
 			}
 		}
-		
+
+		// then check streaming path
 		absPath = Application.streamingAssetsPath + "/" + relPath;
-		
 		if (mCacheAssets.TryGetValue(absPath, out bundle))
 		{
 			return bundle;
@@ -120,24 +121,26 @@ public class AssetsManager
 		}
 	}
 
-	public void LoadAsset(string relPath, EventComplete complete, EventStatus status)
+	public void LoadAsset(string relPath, EventComplete completeDoFun, EventStatus status)
 	{
 		string absPath = "";
 		LoadingWWW loading;
-		
-		foreach(var p in mCachePaths)
+
+		// first check updatepath to get
+		foreach(var p in mUpdatePaths)
 		{
 			absPath = p + "/" + relPath;
-			if(mCacheAssets.ContainsKey(absPath) && complete != null)
+			if(mCacheAssets.ContainsKey(absPath) && completeDoFun != null)
 			{
-				complete(mCacheAssets[absPath]);
+				completeDoFun(mCacheAssets[absPath]);
+				return;
 			}
 			
 			if(System.IO.File.Exists(absPath))
 			{
 				loading.www = new WWW("file://" + absPath);
 				loading.status = status;
-				loading.complete = complete;
+				loading.complete = completeDoFun;
 				loading.relPath = relPath;
 				loading.absPath = absPath;
 				if(loading.status != null)
@@ -145,12 +148,14 @@ public class AssetsManager
 				mLoadingList.Add(loading);
 			}
 		}
-		
+
+		// then check streaming path
 		absPath = Application.streamingAssetsPath + "/" + relPath;
 		AssetBundle bundle = null;
-		if (mCacheAssets.TryGetValue(absPath, out bundle) && complete != null)
+		if (mCacheAssets.TryGetValue(absPath, out bundle) && completeDoFun != null)
 		{
-			complete(bundle);
+			completeDoFun(bundle);
+			return;
 		}
 		
 		if(Application.platform == RuntimePlatform.Android)
@@ -158,7 +163,7 @@ public class AssetsManager
 		else
 			loading.www = new WWW("file://" + absPath);
 		loading.status = status;
-		loading.complete = complete;
+		loading.complete = completeDoFun;
 		loading.relPath = relPath;
 		loading.absPath = absPath;
 		if(loading.status != null)
