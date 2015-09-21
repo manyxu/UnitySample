@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using SLua;
 
 // defines
 public sealed class PageName
@@ -69,6 +70,7 @@ public class UIFactory<T> : UIAbsFactory where T : Component
 }
 
 // manager
+[CustomLuaClassAttribute]
 public class UIManager
 {	
 	// construct

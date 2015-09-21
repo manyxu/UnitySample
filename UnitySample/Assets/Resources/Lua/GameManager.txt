@@ -2,20 +2,55 @@
 
 import "UnityEngine"
 
-local class = {}
+-- functions
+local assets = {
+	'ui.unity3d',
+	"modelprefab.unity3d"
+}
 
-function class:init()
+local function endLoad()
+	UIManager:GetInstance():Initlize()
+end
+
+local function loadAssetBundle(index)
+	
+	local assetsMgr = AssetsManager:GetInstance()
+	
+	if index > #(assets) then
+		endLoad()
+		return
+	end
+	
+	local status = function(args)
+	end
+	
+	local callback = function(asset)
+		loadAssetBundle(index + 1)
+	end
+	
+	assetsMgr:LoadAsset(assets[index], callback, status)
+end
+
+ -- gamemanager
+local gm = {}
+
+function gm:init()
+	--UIManager:_Load(0)
+	
+	loadAssetBundle(1)
+end
+
+function gm:term()
 
 end
 
-function class:update()
+function gm:update()
 
 end
 
 function main()
 
-	class.root = GameObject("root")
-	class:init()
+	gm:init()
 	
-	return class
+	return gm
 end

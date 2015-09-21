@@ -61,6 +61,7 @@
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaDelegate_Deleg_SimpleDelegate.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaDelegate_EventComplete.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaDelegate_EventStatus.cs" />
+     <Compile Include="Assets\Slua\LuaObject\Custom\LuaDelegate_EventUI.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaSystem_Action_1_int.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaSystem_Action_1_string.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\LuaSystem_Action_2_int_Dictionary_System_Int32_object_.cs" />
@@ -72,12 +73,14 @@
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_AssetsManager.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_Custom.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_Deleg.cs" />
+     <Compile Include="Assets\Slua\LuaObject\Custom\Lua_GameManager.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_HelloWorld.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_LoadingProgressArg.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_SLuaTest.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_System_Collections_Generic_Dictionary_2_int_string.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_System_Collections_Generic_List_1_int.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_System_String.cs" />
+     <Compile Include="Assets\Slua\LuaObject\Custom\Lua_UIManager.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_XXList.cs" />
      <Compile Include="Assets\Slua\LuaObject\Custom\Lua_foostruct.cs" />
      <Compile Include="Assets\Slua\LuaObject\Unity\BindUnity.cs" />

@@ -9,6 +9,7 @@ public delegate void EventUI();
 
 // 游戏管理器 
 // 这是一个单件实例，控制着整个游戏的生命
+[CustomLuaClassAttribute]
 public class GameManager : MonoBehaviour 
 {
 	// Instances
@@ -21,6 +22,13 @@ public class GameManager : MonoBehaviour
 	
 	[HideInInspector]
 	public UIManager mUIMgr = null;
+
+	[HideInInspector]
+	public LuaSvr luaSvr_GM;
+	[HideInInspector]
+	public LuaTable luaSelf_GM;
+	[HideInInspector]
+	public LuaFunction luaUpdate_GM;
 	
 	void Awake()
 	{
@@ -32,64 +40,67 @@ public class GameManager : MonoBehaviour
 		// keep alive on change scene
 		DontDestroyOnLoad(this.gameObject);
 
+		// if exist gameobject called "UIRoot". Destory it.
+		// this maybe we add to desing ui temply
 		GameObject gameObjectUIRoot = GameObject.Find("UIRoot");
 		GameObject.Destroy (gameObjectUIRoot);
 
-		// asset manager
 		mAssetsMgr = AssetsManager.GetInstance ();
+
+		mUIMgr = UIManager.GetInstance ();
+		
+		// we has put these code into lua script
+		/*
 		// asset manager update path
 		string updatePath = Application.persistentDataPath + "Update";
 		if (!Directory.Exists(updatePath)) Directory.CreateDirectory(updatePath);
 		mAssetsMgr.AddUpdatePath (updatePath);
 
 		// ui manager
-		mUIMgr = UIManager.GetInstance ();
-
 		_Load(0, () => {
 			mUIMgr.Initlize();
 		});
+		*/
+
+		// lua
+		luaSvr_GM = new LuaSvr();
+		luaSelf_GM =(LuaTable)luaSvr_GM.start("Lua/GameManager");
+		luaUpdate_GM = (LuaFunction)luaSelf_GM["update"];
 	}
 	
 	// assets
 	static string[] UI_ASSETS = new string[] { "ui.unity3d", "modelprefab.unity3d"};
-	void _Load(int startIndex, EventUI callback)
+	void _Load(int startIndex, EventUI allLoadedCallback)
 	{
 		// load complete
 		if (startIndex >= UI_ASSETS.Length)
 		{
-			if(callback != null)
-				callback();
+			if(allLoadedCallback != null)
+				allLoadedCallback();
 			return;
 		}
 		
 		var assetMgr = AssetsManager.GetInstance();
 		assetMgr.LoadAsset(UI_ASSETS[startIndex], (AssetBundle asset) => {
-			_Load(startIndex + 1, callback); }, null);
+			_Load(startIndex + 1, allLoadedCallback); }, null);
 	}
-	
-	public LuaSvr luaSvr_GM;
-	public LuaTable luaSelf_GM;
-	public LuaFunction luaUpdate_GM;
 
 	// Use this for initialization
 	void Start () {
-		luaSvr_GM = new LuaSvr();
-		luaSelf_GM =(LuaTable)luaSvr_GM.start("Lua/GameManager");
-		luaUpdate_GM = (LuaFunction)luaSelf_GM["update"];
 	}
 
 	void OnDestroy()
 	{
-		if (null != mAssetsMgr)
-		{
-			mAssetsMgr.Destroy();
-			mAssetsMgr = null;
-		}
-
 		if (null != mUIMgr) 
 		{
 			mUIMgr.Destroy();
 			mUIMgr = null;
+		}
+
+		if (null != mAssetsMgr)
+		{
+			mAssetsMgr.Destroy();
+			mAssetsMgr = null;
 		}
 	}
 	

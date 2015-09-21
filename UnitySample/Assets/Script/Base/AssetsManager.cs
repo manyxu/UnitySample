@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using LuaInterface;
 using SLua;
 
 [CustomLuaClassAttribute]
@@ -21,6 +20,8 @@ public class LoadingProgressArg : EventArgs
 public delegate void EventStatus(LoadingProgressArg arg0);
 public delegate void EventComplete(AssetBundle bundle);
 
+// 资源管理器是一个AssetBundle的管理器
+// 首先从Update目录加载AssetBunlde，如果没有从StreamingPath获取
 [CustomLuaClassAttribute]
 public class AssetsManager
 {
@@ -53,7 +54,13 @@ public class AssetsManager
 		mLoadingList = new List<LoadingWWW> ();
 	}
 
-	// cache
+	public void Destroy()
+	{
+		ClearAssetAll (false);
+		sInstance = null;
+	}
+	
+	// update
 	public void AddUpdatePath(string path)
 	{
 		mUpdatePaths.Add (path);
@@ -64,6 +71,7 @@ public class AssetsManager
 		mUpdatePaths.Clear ();
 	}
 
+	// cache asset
 	public AssetBundle GetFromCache(string relPath) 
 	{
 		string absPath = "";
@@ -88,8 +96,7 @@ public class AssetsManager
 		
 		return null;
 	}
-
-	// Asset
+	
 	public void ClearAssetAll(bool unloadAllLoadedObjects)
 	{
 		foreach (var pair in mCacheAssets) 
@@ -189,11 +196,5 @@ public class AssetsManager
 				mLoadingList.RemoveAt(i);
 			}
 		}
-	}
-	
-	public void Destroy()
-	{
-		ClearAssetAll (false);
-		sInstance = null;
 	}
 }

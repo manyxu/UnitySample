@@ -1,15 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Base\AssetsManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Slua\Script\LuaState.cs">
     <Files>
-      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="72" Column="35" />
+      <File FileName="Assets\Script\Game\GameManager.cs" Line="84" Column="15" />
+      <File FileName="Assets\Script\Game\UI\UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="20" Column="59" />
+      <File FileName="Assets\Slua\Script\LuaState.cs" Line="751" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\xuduo\Documents\GitHub\UnitySample\UnitySample\Assets\Editor\BuildAssetBundles.cs" line="56" />
-      <Breakpoint file="C:\Users\xuduo\Documents\GitHub\UnitySample\UnitySample\Assets\Script\Base\AssetsManager.cs" line="155" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
