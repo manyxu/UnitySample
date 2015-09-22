@@ -1,0 +1,35 @@
+-- UIViewLogin.txt
+
+local UIViewLogin = 
+{
+	name = nil,
+	parentPage = nil,
+	view = nil,
+	butEnter = nil
+}
+
+function UIViewLogin:new(o)
+	o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    return o
+end
+
+function UIViewLogin:init(parPage)
+	self.name = "PanelLogin"
+	self.parentPage = parPage
+	self.view = self.parentPage.page:OpenView(self.name)
+	
+	self.butEnter = self.view.gameObject.transform:FindChild("ButEnter"):GetComponent("Button")
+	self.butEnter.onClick:AddListener(
+		function()
+			GameM.uiPageMan.viewLogin:close()
+			Application.LoadLevel("Scene0")
+		end)
+end
+
+function UIViewLogin:close()
+	self.view:Close()
+end
+
+return UIViewLogin

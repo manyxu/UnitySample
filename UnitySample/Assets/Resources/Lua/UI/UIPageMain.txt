@@ -1,0 +1,30 @@
+-- UIPageMain.txt
+
+local UIPageMain =
+ {
+ 	name = nil,
+ 	page = nil,
+ 	viewLogin = nil
+ }
+
+function UIPageMain:new(o)
+	o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    return o
+end
+
+function UIPageMain:init()
+	self.name = "UIPageMain"
+	self.page = UIManager:GetInstance():PagePush(self.name)
+	
+	local viewLogin = require("Lua.UI.UIViewLogin")
+	self.viewLogin = viewLogin:new()
+	self.viewLogin:init(self)
+end
+
+function UIPageMain:close()
+	UIManager:GetInstance():PagePush(self.name)
+end
+
+return UIPageMain
