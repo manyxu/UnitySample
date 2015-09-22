@@ -1,13 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Game\UI\UIManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Lua\UI\UIViewLogin.txt">
     <Files>
-      <File FileName="Assets\Resources\Lua\UI\UIViewLogin.txt" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Lua\UI\UIPageMain.txt" Line="1" Column="1" />
-      <File FileName="Assets\Script\Game\UI\UIManager.cs" Line="107" Column="5" />
-      <File FileName="Assets\Script\Base\UI\UIPage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Base\AssetsManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Base\UI\UIView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Lua\UI\UIViewLogin.txt" Line="27" Column="25" />
+      <File FileName="Assets\Resources\Lua\UI\UIPageMain.txt" Line="3" Column="17" />
+      <File FileName="Assets\Resources\Lua\GameManager.txt" Line="31" Column="17" />
+      <File FileName="Assets\Script\Game\UI\Pages\UIPageMain.cs" Line="22" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
