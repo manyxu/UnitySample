@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using SLua;
 
+[CustomLuaClassAttribute]
 public class UIWidget : MonoBehaviour 
 {
+	[HideInInspector]
+
 	private List<UIWidget> mWidgets = new List<UIWidget>();
 
 	// Load UnLoad

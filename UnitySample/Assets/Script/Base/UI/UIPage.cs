@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SLua;
 
+[CustomLuaClassAttribute]
 public class UIPage : UIWidget 
 {
 	public GameObject mCanvasObject;
@@ -9,6 +11,7 @@ public class UIPage : UIWidget
 	private Dictionary<string, UIView> mViews = new Dictionary<string, UIView>();
 
 	private Dictionary<string, UIAbsFactory> mFacDic = null;
+
 	public override void OnLoad()
 	{
 		mFacDic = UIManager.GetInstance().FactoryDic;
@@ -16,7 +19,8 @@ public class UIPage : UIWidget
 
 		mCanvasObject = transform.GetChild (0).gameObject;
 	}
-	
+
+	[DoNotToLua]
 	public virtual T OpenView<T> (string name) where T : UIView
 	{
 		UIView view;
@@ -43,6 +47,7 @@ public class UIPage : UIWidget
 		return null;
 	}
 
+	[DoNotToLua]
 	public virtual T FindView<T>(string name) where T : UIView
 	{
 		UIView view;
@@ -51,6 +56,32 @@ public class UIPage : UIWidget
 			return (T)view;
 		}
 		
+		return null;
+	}
+
+	public virtual UIView OpenView(string name)
+	{
+		UIView view;
+		if (mViews.TryGetValue(name, out view))
+		{
+			return view;
+		}
+		
+		UIAbsFactory fac;
+		if (mFacDic.TryGetValue(name, out fac))
+		{
+			view = fac.Create() as UIView;
+			
+			view.Name = name;
+			view.Owner = this;
+			
+			view.gameObject.transform.SetParent(mCanvasObject.transform, false);
+			
+			view.Init();
+			mViews.Add(name, view);
+			
+			return view;
+		}
 		return null;
 	}
 

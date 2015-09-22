@@ -101,17 +101,35 @@ public class UIManager
 		GameObject.DontDestroyOnLoad(mRoot);
 
 		// pages
-		mFacDic.Add(PageName.UIPageMain, new UIFactory<UIPageMain>("ui.unity3d", PageName.UIPageMain));
+		//mFacDic.Add(PageName.UIPageMain, new UIFactory<UIPage>("ui.unity3d", PageName.UIPageMain));
 		
 		// views
-		mFacDic.Add(ViewName.Login, new UIFactory<UIViewLogin>("ui.unity3d", ViewName.Login));
+		//mFacDic.Add(ViewName.Login, new UIFactory<UIView>("ui.unity3d", ViewName.Login));
+
+		// pages
+		//mFacDic.Add(PageName.UIPageMain, new UIFactory<UIPageMain>("ui.unity3d", PageName.UIPageMain));
+		
+		// views
+		//mFacDic.Add(ViewName.Login, new UIFactory<UIViewLogin>("ui.unity3d", ViewName.Login));
 
 		// open page
-		UIPage page = PagePush(PageName.UIPageMain);
-		page.OpenView<UIViewLogin>(ViewName.Login);
+		//UIPage page = PagePush(PageName.UIPageMain);
+		//page.OpenView<UIViewLogin>(ViewName.Login);
 
 		// load level;
 		//Application.LoadLevel("Login");
+	}
+
+	// for script
+	// add factorys coording assetbundle
+	public void AddPageFactory(string elementName, string assetBundleName)
+	{
+		mFacDic.Add (elementName, new UIFactory<UIPage> (assetBundleName, elementName));
+	}
+
+	public void AddViewFactory(string elementName, string assetBundleName)
+	{
+		mFacDic.Add (elementName, new UIFactory<UIView> (assetBundleName, elementName));
 	}
 
 	// pages

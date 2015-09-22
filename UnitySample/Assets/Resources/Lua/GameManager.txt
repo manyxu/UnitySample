@@ -2,14 +2,35 @@
 
 import "UnityEngine"
 
+ -- gamemanager
+GameM = 
+{
+	uiPageMan = nil,
+	currentPage = nil
+}
+
 -- functions
-local assets = {
+local assets =
+{
 	'ui.unity3d',
 	"modelprefab.unity3d"
 }
 
 local function endLoad()
-	UIManager:GetInstance():Initlize()
+	local uiMan = UIManager:GetInstance()
+	uiMan:Initlize()
+
+	-- pages factory	
+	uiMan:AddPageFactory("UIPageMain", "ui.unity3d");
+
+	-- views factory
+	uiMan:AddViewFactory("PanelLogin", "ui.unity3d");
+	
+	-- add main view
+	local uiPangeMan = require("Lua.UI.UIPageMain")
+	GameM.uiPageMan = uiPangeMan:new()
+	GameM.uiPageMan:init()
+	GameM.currentPage = GameM.uiPageMan
 end
 
 local function loadAssetBundle(index)
@@ -32,25 +53,21 @@ local function loadAssetBundle(index)
 end
 
  -- gamemanager
-local gm = {}
-
-function gm:init()
-	--UIManager:_Load(0)
-	
+function GameM:init()	
 	loadAssetBundle(1)
 end
 
-function gm:term()
+function GameM:term()
 
 end
 
-function gm:update()
+function GameM:update()
 
 end
 
 function main()
 
-	gm:init()
+	GameM:init()
 	
-	return gm
+	return GameM
 end

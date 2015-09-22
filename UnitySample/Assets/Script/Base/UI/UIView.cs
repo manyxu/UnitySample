@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SLua;
 
+[CustomLuaClassAttribute]
 public class UIView : UIWidget 
 {
 	public string Name;
 	public UIPage Owner { get; set; }
-	
+
 	public void Init()
 	{
 		OnInit();

@@ -177,7 +177,8 @@ public class AssetsManager
 			loading.status(new LoadingProgressArg(loading.www.progress, relPath));
 		mLoadingList.Add(loading);		
 	}
-	
+
+	[DoNotToLua]
 	public void Tick()
 	{
 		for (int i = mLoadingList.Count - 1; i >= 0; i--) 
