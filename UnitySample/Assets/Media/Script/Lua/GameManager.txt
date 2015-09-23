@@ -13,7 +13,8 @@ GameM =
 local assets =
 {
 	'ui.unity3d',
-	"modelprefab.unity3d"
+	"modelprefab.unity3d",
+	"ui.unity3d"
 }
 
 local function endLoad()
@@ -54,7 +55,10 @@ end
 
  -- gamemanager
 function GameM:init()	
-	loadAssetBundle(1)
+	-- we do not load in lua noew.
+	--loadAssetBundle(1)
+	
+	endLoad()
 end
 
 function GameM:term()

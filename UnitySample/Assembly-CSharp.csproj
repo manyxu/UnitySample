@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Base\AssetsManager.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetSystem.cs" />
+     <Compile Include="Assets\Script\Base\Net\Session.cs" />
      <Compile Include="Assets\Script\Base\UI\UIPage.cs" />
      <Compile Include="Assets\Script\Base\UI\UIView.cs" />
      <Compile Include="Assets\Script\Base\UI\UIWidget.cs" />
@@ -584,14 +586,14 @@
      <None Include="Assets\Slua\Resources\module\some.txt" />
      <None Include="Assets\Slua\Resources\main.txt" />
      <None Include="Assets\Slua\Resources\circle\circle.txt" />
+     <None Include="Assets\Media\Script\Lua\UI\UIViewLogin.txt" />
+     <None Include="Assets\Media\Script\Lua\GameManager.txt" />
      <None Include="Assets\Slua\Resources\perf.txt" />
      <None Include="Assets\Slua\Resources\delegate.txt" />
-     <None Include="Assets\Resources\Lua\UI\UIPageMain.txt" />
-     <None Include="Assets\Resources\Lua\UI\UIViewLogin.txt" />
+     <None Include="Assets\Media\Script\Lua\UI\UIPageMain.txt" />
      <None Include="Assets\Slua\Resources\valuetype.txt" />
      <None Include="Assets\Slua\Resources\varobj.txt" />
      <None Include="Assets\Slua\Resources\custom.txt" />
-     <None Include="Assets\Resources\Lua\GameManager.txt" />
      <None Include="Assets\slua_src\build.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>

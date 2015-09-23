@@ -24,11 +24,29 @@ public class GameManager : MonoBehaviour
 	public UIManager mUIMgr = null;
 
 	[HideInInspector]
-	public LuaSvr luaSvr_GM;
+	public LuaSvr luaSvr_GM = null;
 	[HideInInspector]
-	public LuaTable luaSelf_GM;
+	public LuaTable luaSelf_GM = null;
 	[HideInInspector]
-	public LuaFunction luaUpdate_GM;
+	public LuaFunction luaUpdate_GM = null;
+
+	static byte[] LuaLoadFunction(string filename)
+	{
+		AssetBundle ab = AssetsManager.GetInstance()
+			.GetFromCache("script.unity3d");
+
+		filename = filename.Replace(".", "/");
+		string[] splitStrs = filename.Split('/');
+		string lastName = splitStrs[splitStrs.Length - 1];
+
+		TextAsset groundPrefab = ab.Load(lastName) as TextAsset;
+		if (null != groundPrefab) 
+		{
+			return groundPrefab.bytes;
+		}
+
+		return null;
+	}
 	
 	void Awake()
 	{
@@ -43,14 +61,17 @@ public class GameManager : MonoBehaviour
 		// if exist gameobject called "UIRoot". Destory it.
 		// this maybe we add to desing ui temply
 		GameObject gameObjectUIRoot = GameObject.Find("UIRoot");
-		GameObject.Destroy (gameObjectUIRoot);
+		if (null != gameObjectUIRoot)
+			GameObject.Destroy (gameObjectUIRoot);
+
+		GameObject uiPageMain = GameObject.Find("UIPageMain");
+		if (null != uiPageMain)
+			GameObject.Destroy (uiPageMain);
 
 		mAssetsMgr = AssetsManager.GetInstance ();
 
 		mUIMgr = UIManager.GetInstance ();
-		
-		// we has put these code into lua script
-		/*
+
 		// asset manager update path
 		string updatePath = Application.persistentDataPath + "Update";
 		if (!Directory.Exists(updatePath)) Directory.CreateDirectory(updatePath);
@@ -58,18 +79,16 @@ public class GameManager : MonoBehaviour
 
 		// ui manager
 		_Load(0, () => {
-			mUIMgr.Initlize();
+			// lua
+			LuaState.loaderDelegate = LuaLoadFunction; 
+			luaSvr_GM = new LuaSvr();
+			luaSelf_GM =(LuaTable)luaSvr_GM.start("Lua/GameManager");
+			luaUpdate_GM = (LuaFunction)luaSelf_GM["update"];
 		});
-		*/
-
-		// lua
-		luaSvr_GM = new LuaSvr();
-		luaSelf_GM =(LuaTable)luaSvr_GM.start("Lua/GameManager");
-		luaUpdate_GM = (LuaFunction)luaSelf_GM["update"];
 	}
 	
 	// assets
-	static string[] UI_ASSETS = new string[] { "ui.unity3d", "modelprefab.unity3d"};
+	static string[] UI_ASSETS = new string[] { "ui.unity3d", "modelprefab.unity3d", "script.unity3d"};
 	void _Load(int startIndex, EventUI allLoadedCallback)
 	{
 		// load complete
@@ -110,6 +129,7 @@ public class GameManager : MonoBehaviour
 		if (null != mAssetsMgr)
 			mAssetsMgr.Tick ();
 
-		luaUpdate_GM.call(luaSelf_GM);
+		if (null != luaUpdate_GM)
+			luaUpdate_GM.call(luaSelf_GM);
 	}
 }

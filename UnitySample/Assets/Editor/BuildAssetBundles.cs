@@ -84,9 +84,49 @@ public class UnitySampleEditor
 		AssetDatabase.Refresh ();
 	}
 
+	static List<UnityEngine.Object> FindScript()
+	{
+		List<UnityEngine.Object> ui = new List<UnityEngine.Object> ();
+		var guids = AssetDatabase.FindAssets ("t:TextAsset", new string[] {"Assets/Media/Script"});
+		
+		foreach (var g in guids) 
+		{
+			string path = AssetDatabase.GUIDToAssetPath(g);
+			UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+			if (null != obj)
+			{
+				ui.Add(obj);
+			}
+		}
+		
+		return ui;
+	}
+
+	[MenuItem ("UnitySample/Build_Script")]
+	static void Build_Script ()
+	{
+		BuildAssetBundleOptions opt = BuildAssetBundleOptions.CollectDependencies |
+			BuildAssetBundleOptions.CompleteAssets | BuildAssetBundleOptions.DeterministicAssetBundle;
+		
+		var objs = FindScript ();
+		if (objs.Count > 0) 
+		{
+			BuildPipeline.BuildAssetBundle(null, objs.ToArray(),
+			                               Application.streamingAssetsPath + "/script.unity3d", opt, 
+			                               EditorUserBuildSettings.activeBuildTarget);
+		}
+		
+		if (sIsShowDialog)
+			EditorUtility.DisplayDialog ("Build Assets", "Build Assets Complete!", "OK");
+		
+		AssetDatabase.Refresh ();
+	}
+
 	[MenuItem ("UnitySample/Build_All")]
 	static void Build_All ()
 	{
 		Build_UI ();
+		FindModelPrefab ();
+		Build_Script ();
 	}
 }
