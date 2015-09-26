@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Base\AssetsManager.cs" />
+     <Compile Include="Assets\Script\Base\Net\Client.cs" />
      <Compile Include="Assets\Script\Base\Net\NetSystem.cs" />
      <Compile Include="Assets\Script\Base\Net\Session.cs" />
      <Compile Include="Assets\Script\Base\UI\UIPage.cs" />

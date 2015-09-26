@@ -97,10 +97,43 @@ namespace Net
 		SyncObject _syncObj = new SyncObject();
 	}
 
-	public class Session
+	public delegate void EventVerify(object sender, UInt32 stat);
+	public delegate void EventText(object sender, string data);
+	public delegate void EventMessage(uint msgid, byte[] data);
+	public delegate void EventResponse(uint msgid, byte[] data, bool timeout);
+	public delegate void EventTranslate();
+	public delegate void EventErrorMessage(uint msgid, uint errid, string reason);
+
+	public class Session : IDisposable
 	{
 		public event EventHandler<TaskArgs<int>> OnOpen;
 		public event EventHandler<TaskArgs<int>> OnClose;
+
+		public event EventVerify OnError;
+		public event EventText OnText;
+		public event EventTranslate OnTranslate;
+		public event EventErrorMessage OnErrorMessage;
+
+		public Session()
+		{
+			_hdr_sz = Marshal.SizeOf(typeof(pkg_hdr_t));
+			_hdr_ptr = Marshal.AllocHGlobal(_hdr_sz);
+			_hdrex_sz = Marshal.SizeOf(typeof(pkg_hdrex_t));
+			_hdrex_ptr = Marshal.AllocHGlobal(_hdrex_sz);
+			_id = _MaxSessionID++;
+			_SessionDic.Add(_id, this);
+		}
+
+		~Session()
+		{
+			Marshal.FreeHGlobal(_hdr_ptr);
+			Marshal.FreeHGlobal(_hdrex_ptr);
+		}
+
+		public bool IsConnected
+		{
+			get { return _sock != null && _sock.Connected; }
+		}
 	}
 
 }
