@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Net
 {
-
+	/*
 	public interface Task
 	{
 		int Execute();
@@ -135,5 +135,6 @@ namespace Net
 			get { return _sock != null && _sock.Connected; }
 		}
 	}
+	*/
 
 }
