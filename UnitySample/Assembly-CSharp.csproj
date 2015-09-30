@@ -47,14 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Base\AssetsManager.cs" />
-     <Compile Include="Assets\Script\Base\Net\NetSystem.cs" />
-     <Compile Include="Assets\Script\Base\Net\Session.cs" />
      <Compile Include="Assets\Script\Base\UI\UIPage.cs" />
      <Compile Include="Assets\Script\Base\UI\UIView.cs" />
      <Compile Include="Assets\Script\Base\UI\UIWidget.cs" />
      <Compile Include="Assets\Script\Game\Bat\BatStart.cs" />
      <Compile Include="Assets\Script\Game\Bat\TankControl.cs" />
      <Compile Include="Assets\Script\Game\GameManager.cs" />
+     <Compile Include="Assets\Script\Game\ProtoBuf\Proto\ProtocolParser.cs" />
+     <Compile Include="Assets\Script\Game\ProtoBuf\Proto\account.Serializer.cs" />
+     <Compile Include="Assets\Script\Game\ProtoBuf\Proto\account.cs" />
      <Compile Include="Assets\Script\Game\UI\Pages\UIPageMain.cs" />
      <Compile Include="Assets\Script\Game\UI\UIManager.cs" />
      <Compile Include="Assets\Script\Game\UI\Views\UIViewLogin.cs" />
@@ -712,6 +713,7 @@
      <None Include="Assets\strangeioc\extensions\ReadMe.txt" />
      <None Include="Assets\Media\Script\Lua\GameManager.txt" />
      <None Include="Assets\Slua\Resources\perf.txt" />
+     <None Include="Assets\Script\Game\ProtoBuf\COPYING Apache License, Version 2.0.txt" />
      <None Include="Assets\Slua\Resources\delegate.txt" />
      <None Include="Assets\Media\Script\Lua\UI\UIPageMain.txt" />
      <None Include="Assets\Slua\Resources\valuetype.txt" />
@@ -720,6 +722,12 @@
      <None Include="Assets\slua_src\build.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity465/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="CodeWriter">
+ <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CodeWriter.dll</HintPath>
+ </Reference>
+ <Reference Include="CommandLine">
+ <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CommandLine.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
