@@ -47,12 +47,20 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Base\AssetsManager.cs" />
+     <Compile Include="Assets\Script\Base\Net\MessageIdentifiers.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetBitStream.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetPacket.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetStructManager.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetTCPConnector.cs" />
+     <Compile Include="Assets\Script\Base\Net\NetworkManager.cs" />
      <Compile Include="Assets\Script\Base\UI\UIPage.cs" />
      <Compile Include="Assets\Script\Base\UI\UIView.cs" />
      <Compile Include="Assets\Script\Base\UI\UIWidget.cs" />
      <Compile Include="Assets\Script\Game\Bat\BatStart.cs" />
      <Compile Include="Assets\Script\Game\Bat\TankControl.cs" />
      <Compile Include="Assets\Script\Game\GameManager.cs" />
+     <Compile Include="Assets\Script\Game\Net\GameClient.cs" />
+     <Compile Include="Assets\Script\Game\Net\GameNetworkManager.cs" />
      <Compile Include="Assets\Script\Game\ProtoBuf\Proto\ProtocolParser.cs" />
      <Compile Include="Assets\Script\Game\ProtoBuf\Proto\account.Serializer.cs" />
      <Compile Include="Assets\Script\Game\ProtoBuf\Proto\account.cs" />

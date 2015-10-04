@@ -76,9 +76,6 @@
  <Reference Include="CommandLine">
  <HintPath>D:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CommandLine.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
  <HintPath>D:/codes/UnitySample/UnitySample/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
@@ -87,6 +84,9 @@
  </Reference>
  <Reference Include="UnityVS.VersionSpecific">
  <HintPath>D:/codes/UnitySample/UnitySample/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
