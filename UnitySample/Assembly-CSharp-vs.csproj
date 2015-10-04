@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Unity465/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Unity465/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -721,13 +721,13 @@
      <None Include="Assets\Slua\Resources\custom.txt" />
      <None Include="Assets\slua_src\build.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity465/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="CodeWriter">
- <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CodeWriter.dll</HintPath>
+ <HintPath>D:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CodeWriter.dll</HintPath>
  </Reference>
  <Reference Include="CommandLine">
- <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CommandLine.dll</HintPath>
+ <HintPath>D:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CommandLine.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
