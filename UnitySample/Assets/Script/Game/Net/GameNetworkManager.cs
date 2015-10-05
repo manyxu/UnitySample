@@ -9,7 +9,7 @@ public class GameNetworkManager : NetworkManager
     public void Start()
     {
         client = new NetTCPConnector();
-        client.Connect("127.0.0.1", 10001);
+        client.Connect("127.0.0.1", 10021);
     }
 
     public void Send(NetBitStream stream)
@@ -35,12 +35,12 @@ public class GameNetworkManager : NetworkManager
                     }
                 case (ushort)MessageIdentifiers.ID.CONNECTION_ATTEMPT_FAILED:
                     {
-                        Debug.Log("连接服务器失败,请退出");
+                        Debug.Log("连接服务器失败,请退出" + packet._error);
                         break;
                     }
                 case (ushort)MessageIdentifiers.ID.CONNECTION_LOST:
                     {
-                        Debug.Log("失与服务器的连接,请按任意键退出");
+                        Debug.Log("失与服务器的连接,请按任意键退出" + packet._error);
                         break;
                     }
                 case (ushort)MessageIdentifiers.ID.ID_CHAT:

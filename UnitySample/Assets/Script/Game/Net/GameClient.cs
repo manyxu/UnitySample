@@ -62,4 +62,17 @@ public class GameClient : MonoBehaviour
         //清空_inputString
         _inputString = "";
     }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(5, 5, 200, 30), _revString);
+
+        _inputString = GUI.TextField(new Rect(Screen.width*0.5f-200.0f, Screen.height*0.5f-20, 400.0f, 20.0f), _inputString);
+
+        if (GUI.Button(new Rect(Screen.width*0.5f-100, Screen.height*0.65f, 200, 30), "发送消息"))
+        {
+            SendChat();
+        }
+    }
+
 }

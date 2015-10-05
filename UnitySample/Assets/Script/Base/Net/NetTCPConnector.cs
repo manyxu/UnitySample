@@ -22,30 +22,21 @@ public class NetTCPConnector
         if (_socket != null && _socket.Connected)
             return true;
 
-        IPHostEntry hostEntry = Dns.GetHostEntry(address);
-        foreach (IPAddress ip in hostEntry.AddressList)
+        try
         {
-            try
-            {
-                //获得远程服务器的地址
-                IPEndPoint ipe = new IPEndPoint(ip, remotePort);
+            IPEndPoint ipe = new IPEndPoint(IPAddress.Parse(address), remotePort);
 
-                // 创建socket
-                _socket = new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            // 创建socket
+            _socket = new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-                // 开始连接
-                _socket.BeginConnect(ipe, new System.AsyncCallback(ConnectionCallback), _socket);
-
-                break;
-
-            }
-            catch (System.Exception e)
-            {
-                // 连接失败
-                PushPacket((ushort)MessageIdentifiers.ID.CONNECTION_ATTEMPT_FAILED, e.Message);
-                return false;
-            }
-
+            // 开始连接
+            _socket.BeginConnect(ipe, new System.AsyncCallback(ConnectionCallback), _socket);
+        }
+        catch (System.Exception e)
+        {
+            // 连接失败
+            PushPacket((ushort)MessageIdentifiers.ID.CONNECTION_ATTEMPT_FAILED, e.Message);
+            return false;
         }
 
         return true;
