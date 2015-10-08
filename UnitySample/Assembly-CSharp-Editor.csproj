@@ -57,7 +57,6 @@
      <None Include="Assets\strangeioc\extensions\ReadMe.txt" />
      <None Include="Assets\Media\Script\Lua\GameManager.txt" />
      <None Include="Assets\Slua\Resources\perf.txt" />
-     <None Include="Assets\Script\Game\ProtoBuf\COPYING Apache License, Version 2.0.txt" />
      <None Include="Assets\Slua\Resources\delegate.txt" />
      <None Include="Assets\Media\Script\Lua\UI\UIPageMain.txt" />
      <None Include="Assets\Slua\Resources\valuetype.txt" />
@@ -69,12 +68,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/Unity465/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.5/Editor/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="CodeWriter">
- <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CodeWriter.dll</HintPath>
- </Reference>
- <Reference Include="CommandLine">
- <HintPath>E:/codes/UnitySample/UnitySample/Assets/Script/Game/ProtoBuf/CommandLine.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
  <HintPath>E:/codes/UnitySample/UnitySample/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>

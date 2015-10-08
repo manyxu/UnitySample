@@ -63,12 +63,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="CodeWriter">
-      <HintPath>Assets\Script\Game\ProtoBuf\CodeWriter.dll</HintPath>
-    </Reference>
-    <Reference Include="CommandLine">
-      <HintPath>Assets\Script\Game\ProtoBuf\CommandLine.dll</HintPath>
-    </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
@@ -95,7 +89,6 @@
     <None Include="Assets\Media\Script\Lua\GameManager.txt" />
     <None Include="Assets\Media\Script\Lua\UI\UIPageMain.txt" />
     <None Include="Assets\Media\Script\Lua\UI\UIViewLogin.txt" />
-    <None Include="Assets\Script\Game\ProtoBuf\COPYING Apache License, Version 2.0.txt" />
     <None Include="Assets\Slua\Resources\circle\circle.txt" />
     <None Include="Assets\Slua\Resources\custom.txt" />
     <None Include="Assets\Slua\Resources\delegate.txt" />
